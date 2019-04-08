@@ -2,11 +2,8 @@
 
 ## Overview
 
-Enable single sign-on to AWS console using GSuite.
+Enable single sign-on to AWS console using GSuite:
 
-<img src="./overview.png" width="500">
-
-Detailed Achievements:
 1. On AWS - setup cross account roles in the SSO account to switch roles to other accounts, so we only need to map GSuite groups to IAM roles in SSO acccount
 1. On GSuite - add AWS Console as a SAML App to GSuite and enable SSO experience
 1. On AWS - automate mapping between GSuite groups to IAM roles and update the mapping based on a config file (google sheets) on an hourly basis
