@@ -30,7 +30,7 @@ Enable single sign-on to AWS console using GSuite:
 
     Create a custom attribute category named "SSO" with two attributes defined:
     * IAM Role (IAM_Role): this is a multiple value text attribute that has all the roles mapped to the user. The format is "ARN of IAM role to assume", "ARN of the identity provider (will setup in step 3 below)"
-    * Session Duration (Session_Duation): Whole Number, the session duration in seconds, default is 3600 (an hour)
+    * Session Duration (Session_Duration): Whole Number, the session duration in seconds, default is 3600 (an hour)
 
 1. Add a new SAML App in GSuite
 
@@ -100,12 +100,12 @@ Automate mapping between GSuite groups to AWS roles and update the mapping based
 1. Create lambda function
 
     * Create an IAM role with AWSLambdaExecute permission
-    * Create a python3.6 lambda function using the IAM role and package created above.
+    * Create a python3.7 lambda function using the IAM role and package created above.
     * Add following environment variables:
         "schema_name": "SSO",
         "iam_role_property_name": "IAM_Role",
         "session_duration_property_name": "Session_Duration",
-        "session_duration_property_value": "28800",
+        "session_duration_property_value": "3600",
         "assume_user": "email of the user to assume",
         "spreadsheet_id": "spreadsheet id",
         "spreadsheet_range_name": "spreadsheet range name",
