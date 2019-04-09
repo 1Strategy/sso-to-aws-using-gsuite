@@ -15,7 +15,7 @@ Enable single sign-on to AWS console using GSuite:
 1. A G Suite user with super administrator access
 1. A google sheets file with below two columns:
     * group_email: the email address of the group
-    * role_arns: a comma seperated arn list of the IAM roles assigned to users in the group
+    * role_arns: a comma separated arn list of the IAM roles assigned to users in the group
     * Here is an example:
 
     | group_email        | role_arns                                         |
@@ -41,7 +41,7 @@ Enable single sign-on to AWS console using GSuite:
     * Step 5 - Attribute mapping
         * https://aws.amazon.com/SAML/Attributes/RoleSessionName --> "Basic Information" | "Primary Email"
         * https://aws.amazon.com/SAML/Attributes/Role --> "SSO" | "IAM_Role"
-        * https://aws.amazon.com/SAML/Attributes/SessionDuration --> "SSO" | "Session_Duation"
+        * https://aws.amazon.com/SAML/Attributes/SessionDuration --> "SSO" | "Session_Duration"
 
 ### AWS Console Set Up
 1. Add Identity Provider in AWS
@@ -55,7 +55,7 @@ Enable single sign-on to AWS console using GSuite:
 ### Update the "SSO" custom attribute in the GSuite Admin Console
 
     * Set "SSO" | "IAM_Role" as "ARN of IAM role to assume,ARN of the identity provider"
-    * Set "SSO" | "Session_Duation" as the session duration in seconds, default is 3600s
+    * Set "SSO" | "Session_Duration" as the session duration in seconds, default is 3600s
 
 Then you should be able to log into AWS SSO env by single click on the GSuite App named Amazon Web Services, then switch roles to other accounts from AWS console.
 
