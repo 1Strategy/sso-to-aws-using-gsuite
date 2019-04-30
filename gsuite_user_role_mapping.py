@@ -18,10 +18,13 @@ def updateUserRoleMapping(service_admin, group_email, user_role, group_role):
             for m in members:
                 if m['type'] == 'USER':
                     print("    User: " + m['email'])
-                    if m["email"] in user_role:
-                        user_role[m["email"]].update(group_role)
+                    primary_email = service_admin.users().get(userKey=m["email"]).execute().get('primaryEmail', '')
+                    if primary_email == '':
+                        continue
+                    if primary_email in user_role:
+                        user_role[primary_email].update(group_role)
                     else:
-                        user_role[m["email"]] = set(group_role)
+                        user_role[primary_email] = set(group_role)
                 if m['type'] == 'GROUP':
                     updateUserRoleMapping(service_admin, m['email'], user_role, group_role)
     except Exception as ex:
